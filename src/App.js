@@ -1,5 +1,5 @@
 import './App.css';
-import ItemListContainer from './components/ItemListContainer';
+import ItemDetailContainer from './components/ItemDetailContainer';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <Navbar/>
-      <ItemListContainer titulo = "Bienvenido a la pagina"/>
+      <ItemDetailContainer/>
       <Footer/>
     </div>
   );

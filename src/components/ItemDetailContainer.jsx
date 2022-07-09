@@ -1,15 +1,14 @@
-import React from 'react';
-
 import { productsData } from "../data/productsData";
 import { useEffect, useState} from "react";
-import ItemList from "./ItemList";
+import ItemDetail from "./ItemDetail";
 
-function ItemDetailContainer (){
+const ItemDetailContainer = () =>{
     const[products, setProducts]= useState([])
     const[loading, setLoading] = useState(true)
 
 useEffect (() => {
 getProducts().then( data => {
+
     setProducts(data);
 })
 })
@@ -18,7 +17,7 @@ const getProducts = ()=>{
     return new Promise ((resolve, eject) =>{
         setTimeout (()=>{
             setLoading(false)
-            resolve(productsData)
+            resolve(productsData[1])
         },2000);
     })
 }
@@ -26,11 +25,11 @@ const getProducts = ()=>{
     return (
         <div>
             { loading ? 
-            <div className ="spinner-border text-primary" role="status">
-            <span className ="sr-only">Loading...</span>
+            <div className="spinner-border text-primary" role="status">
+            <span className="sr-only">Loading...</span>
             </div>
             :
-            <ItemList products = {products}/ >
+            <ItemDetail data = {products}/ >
             }
         </div> 
     )

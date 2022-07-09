@@ -28,7 +28,7 @@ function Navbar(){
         
         
     </div>
-    <div class="col col-lg-2">
+    <div className="col col-lg-2">
       <Cardwidget/>
     </div>
   </nav>
