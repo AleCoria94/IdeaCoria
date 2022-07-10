@@ -3,6 +3,7 @@ import './ItemDetail.css'
 import ItemCount from './ItemCount'
 
 export default function ItemDetail({data}){
+    console.log(data);
     return <>
 
     <div className="card d-flex justify-content-around">
