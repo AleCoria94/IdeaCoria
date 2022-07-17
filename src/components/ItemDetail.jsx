@@ -3,7 +3,12 @@ import './ItemDetail.css'
 import ItemCount from './ItemCount'
 
 export default function ItemDetail({data}){
-    console.log(data);
+    let [inCart,setInCart] = React.useState(false);
+
+     function onAdd(contador){
+         setInCart(true);
+        alert(`Agregaste ${contador} elementos al carrito desde`);
+    }
     return <>
 
     <div className="card d-flex justify-content-around">
@@ -18,7 +23,7 @@ export default function ItemDetail({data}){
                     <h1 className="list-group-item"> $ {data.price} </h1>
                     <li className="list-group-item">Retiro gratis en sucursal</li>
                     <li className="list-group-item">Envío a Caba</li>
-                    <ItemCount/>
+                    <ItemCount stock={data.stock} initial={1} onAdd={onAdd} />
                 </div>
             </div>
         </div>

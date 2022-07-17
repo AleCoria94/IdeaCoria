@@ -19,10 +19,7 @@ function Navbar(){
           <a className="nav-link" href="/categoria/Sillones">Sillones</a>
           </li>
         <li className="nav-item">
-          <a className="nav-link" href="/categoria/Bazar">Bazar</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link disabled" href="desactivado">Disabled</a>
+          <a className="nav-link disabled" href="desactivado">Bazar</a>
         </li>
         </ul>
         
