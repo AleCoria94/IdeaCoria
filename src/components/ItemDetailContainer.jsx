@@ -1,41 +1,31 @@
-import { productsData } from "../data/productsData";
 import { useEffect, useState} from "react";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
+import {getFirestore, getDocs, collection,doc,getDoc} from "firebase/firestore"
 
 const ItemDetailContainer = () =>{
     const  {id}=useParams();
-    const url =parseInt(id, 10) -1;
-
     const[loading, setLoading] = useState(true)
     const[products, setProducts]= useState({})
 
-   useEffect (() => {
-
-
-getProducts().then( data => {
-
-setProducts(data);})
-
-
-
- //  if(id){
-  //            getProducts().then( data => {setProducts(data.filter(prod => prod.id = id))})
-            
- //     }else{
-  //     getProducts().then( data => {setProducts(data)})
- //}
-    });
-const getProducts = ()=>{
-    return new Promise ((resolve, reject) =>{
-        setTimeout (()=>{
-            setLoading(false)
-            // ya se dejó en claro en la resolucion de la entrega anterior que no se tiene que haceer así
-            resolve(productsData[url])
-            console.log (productsData[0])
-        },2000);
-    })
-}
+useEffect (() => {
+    if( id){
+       const db = getFirestore();
+      const queryProduct = doc(db,'items',id)
+      getDoc(queryProduct)
+       .then(resp =>setProducts( {id :resp.id, ...resp.data() } ))
+       .catch(err => console.log(err))
+       .finally(()=>setLoading(false))
+  
+  }else{
+      const db = getFirestore();
+      const queryCollection = collection(db,'items')
+         getDocs(queryCollection)
+          .then(resp =>setProducts(resp.docs.map( prod => ( {id :prod.id, ...prod.data() } ))))
+          .catch(err => console.log(err))
+          .finally(()=>setLoading(false))
+  }
+     });
 
     return (
         <div>
