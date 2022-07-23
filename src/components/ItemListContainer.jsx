@@ -3,6 +3,7 @@ import React from 'react';
 import { productsData } from "../data/productsData";
 import { useEffect, useState} from "react";
 import ItemList from "./ItemList";
+import Carrousel from './Carrousel';
 import { useParams } from 'react-router-dom';
 
 function ItemDetailContainer (){
@@ -35,7 +36,12 @@ const getProducts = ()=>{
             <span className ="sr-only">Loading...</span>
             </div>
             :
+            <>
+            <Carrousel/>
             <ItemList products = {products}/ >
+                
+            </>
+        
             }
         </div> 
     )

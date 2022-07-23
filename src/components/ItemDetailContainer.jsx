@@ -4,33 +4,35 @@ import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
 
 const ItemDetailContainer = () =>{
-    const { id }=useParams();
+    const  {id}=useParams();
+    const url =parseInt(id, 10) -1;
+
     const[loading, setLoading] = useState(true)
     const[products, setProducts]= useState({})
 
-    useEffect (() => {
+   useEffect (() => {
 
 
- //   getProducts().then( data => {
+getProducts().then( data => {
 
- //    setProducts(data);})
+setProducts(data);})
 
 
 
-        if(id){
-          getProducts().then( data => {setProducts(data.find(prod => prod.id = id))})
-
-    .catch(err=> console.log(err)) 
-        }else{
-         getProducts().then( data => {setProducts(data)})
-    }
+ //  if(id){
+  //            getProducts().then( data => {setProducts(data.filter(prod => prod.id = id))})
+            
+ //     }else{
+  //     getProducts().then( data => {setProducts(data)})
+ //}
     });
 const getProducts = ()=>{
     return new Promise ((resolve, reject) =>{
         setTimeout (()=>{
             setLoading(false)
             // ya se dejó en claro en la resolucion de la entrega anterior que no se tiene que haceer así
-            resolve(productsData)
+            resolve(productsData[url])
+            console.log (productsData[0])
         },2000);
     })
 }

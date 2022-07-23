@@ -9,7 +9,18 @@ function CartView() {
     if ( itemsInCart.length === 0 ){
         return(
             <div className="container">
-                <Link to="/">Volver al catálogo</Link>
+                <h3>El carrito esta vacío</h3>
+                <Link to="/"><h3>Volver al catálogo</h3></Link>
+                <table className="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Articulo</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Total</th>
+                                </tr>
+                            </thead>
+                            </table>
             </div>
         )
     }
@@ -17,7 +28,7 @@ function CartView() {
         {
             return(
                 <div className="container">
-                    <h3>Estás en el carrito de compras</h3>
+                    
                     <table class="table">
                             <thead>
                                 <tr>
@@ -30,13 +41,13 @@ function CartView() {
                             <tbody>
                                 {
                                     itemsInCart.map( data =>(
-                                        <tr keys={data.id}>
+                                        <li key={data.id}> 
                                             <td>{data.name}</td>
                                             <td>$ {data.price}</td>
                                             <td>{data.qty}</td>
-                                            <td>$ {data.qty*data.price.toFixed(2)}</td>
+                                            <td>$ {data.qty*data.price}</td>
                                             <td><button onClick= {()=>removeItem(data.id)} className="btn btn-primary" type="button">Eliminar del carrito</button></td>
-                                        </tr>
+                                      </li>
                                     ))
                                 }
                             </tbody>

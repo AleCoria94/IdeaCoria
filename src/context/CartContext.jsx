@@ -10,7 +10,7 @@ export function CartContextProvider({children}){
         const[itemsInCart,setItemsInCart] = useState ([]);
 
         function addItem(data,qty){
-            setItemsInCart([...itemsInCart, data])
+            setItemsInCart([...itemsInCart, {...data,qty}])
         }
 
         function isInCart(id){
@@ -39,7 +39,7 @@ export function CartContextProvider({children}){
             }
 
     return(
-       <CartContext.Provider value={ { addItem,quantity: 5, itemsInCart, isInCart, removeItem, clearCart,countItemsInCart} }>
+       <CartContext.Provider value={ { addItem, itemsInCart, isInCart, removeItem, clearCart,countItemsInCart} }>
             {children}
        </CartContext.Provider>
     )
