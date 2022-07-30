@@ -29,7 +29,7 @@ function CartView() {
             return(
                 <div className="container">
                     
-                    <table class="table">
+                    <table className="table">
                             <thead>
                                 <tr>
                                 <th scope="col">Articulo</th>
@@ -41,15 +41,15 @@ function CartView() {
                             <tbody>
                                 {
                                     itemsInCart.map( data =>(
-                                        <li key={data.id}> 
+                                        <tr key={0}> 
                                             <td>{data.name}</td>
                                             <td>$ {data.price}</td>
                                             <td>{data.qty}</td>
                                             <td>$ {data.qty*data.price}</td>
                                             <td><button onClick= {()=>removeItem(data.id)} className="btn btn-primary" type="button">Eliminar del carrito</button></td>
-                                      </li>
-                                    ))
-                                }
+                                      </tr>))
+                                    
+                                    }
                             </tbody>
                             </table>
                             <button onClick= {()=>alert('Compra realizadas')} className="btn btn-success" type="button">Finalizar la compra</button>

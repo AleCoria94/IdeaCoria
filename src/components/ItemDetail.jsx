@@ -3,9 +3,13 @@ import './ItemDetail.css'
 import ItemCount from './ItemCount'
 import useCartContext from "../context/CartContext"
 
+
 export default function ItemDetail({data}){
     
     const{ addItem,  removeItem} = useCartContext();
+
+    const onAdd = (qty)=>{
+             addItem(data,qty)}
 
     return <div className="card d-flex justify-content-around">
         <div className="card-body-sm-3">
@@ -20,7 +24,7 @@ export default function ItemDetail({data}){
                     <h1 className="list-group-item"> $ {data.price} </h1>
                     <li className="list-group-item">Retiro gratis en sucursal</li>
                     <li className="list-group-item">Envío a Caba</li>
-                    <ItemCount stock={data.stock} initial={1} onAdd={addItem} />
+                    <ItemCount stock={data.stock} initial={1} onAdd={onAdd} />
                     <button onClick= {()=>removeItem(data.id)} className="btn btn-primary" type="button">Eliminar del carrito</button>
                 </div>
             </div>

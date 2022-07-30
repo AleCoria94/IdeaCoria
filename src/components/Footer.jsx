@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Footer (){
     return <>
 
@@ -46,13 +48,13 @@ function Footer (){
             Categorías
           </h6>
           <p>
-            <a href="#!" className="text-reset">Sillas</a>
+          <Link to="/categoria/Sillas">Sillas</Link>
           </p>
           <p>
-            <a href="#!" className="text-reset">Sillones</a>
+          <Link to="/categoria/Sillones">Sillones</Link>
           </p>
           <p>
-            <a href="#!" className="text-reset">Bazar</a>
+          <Link to="/categoria/Mesas">Mesas</Link>
           </p>
           <p>
             <a href="#!" className="text-reset">Disabled</a>
